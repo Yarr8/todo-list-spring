@@ -14,31 +14,38 @@ java {
     }
 }
 
+ext {
+    springBootVersion = '3.5.7'
+    lombokVersion = '1.18.42'
+    mapstructVersion = '1.6.3'
+    lombokMapstructBindingVersion = '0.2.0'
+    postgresVersion = '42.7.8'
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:3.5.7'
-    implementation 'org.springframework.boot:spring-boot-starter-validation:3.5.7'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.5.7'
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 
     // DB
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.5.7'
-    runtimeOnly 'org.postgresql:postgresql:42.7.8'
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    runtimeOnly  "org.postgresql:postgresql:${postgresVersion}"
 
     //	LOMBOK
-    compileOnly("org.projectlombok:lombok:1.18.42")
-    annotationProcessor("org.projectlombok:lombok:1.18.42")
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     // LOMBOK-Test
-    testCompileOnly("org.projectlombok:lombok:1.18.42")
-    testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     // MapStruct
-    implementation 'org.mapstruct:mapstruct:1.6.3'
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
-    implementation("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+    implementation  "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor  "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    implementation "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
 }
 
 tasks.named('test') {
